@@ -6,7 +6,8 @@ use App\Entity\Hotel;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
-class SearchService {
+class SearchService
+{
 
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
@@ -15,7 +16,8 @@ class SearchService {
 
     public function __construct(
         EntityManagerInterface $entityManager
-    ) {
+    )
+    {
 
         $this->entityManager = $entityManager;
     }
@@ -25,8 +27,8 @@ class SearchService {
      *
      * @return Hotel[]
      */
-    public function search($hotelNameQuery): array {
-
+    public function search($hotelNameQuery): array
+    {
         /** @var \App\Repository\HotelRepository $hotelRepository */
         $hotelRepository = $this->entityManager->getRepository(Hotel::class);
         return $hotelRepository->searchByName($hotelNameQuery);

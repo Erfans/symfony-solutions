@@ -1,6 +1,9 @@
 docker/mysql
 !docker/mysql/.gitkeep
 
+docker/mysql-test
+!docker/mysql-test/.gitkeep
+
 /.env
 .idea
 .DS_Store
