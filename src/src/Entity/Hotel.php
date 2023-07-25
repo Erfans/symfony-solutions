@@ -25,6 +25,9 @@ class Hotel
     #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Room::class, orphanRemoval: true)]
     private Collection $rooms;
 
+    #[ORM\ManyToOne(inversedBy: 'hotels')]
+    private ?User $owner = null;
+
     public function __construct()
     {
         $this->rooms = new ArrayCollection();
@@ -92,5 +95,17 @@ class Hotel
     public function __toString()
     {
         return "[{$this->id}] {$this->name}";
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
     }
 }

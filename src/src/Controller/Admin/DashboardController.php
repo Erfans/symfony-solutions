@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Attraction;
 use App\Entity\Hotel;
 use App\Entity\Message;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -48,6 +49,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Hotels', 'fa fa-tags', Hotel::class),
             MenuItem::linkToCrud('Attractions', 'fa fa-tags', Attraction::class),
             MenuItem::linkToCrud('Messages', 'fa fa-tags', Message::class),
+//            MenuItem::linkToCrud('Users', 'fa fa-tags', User::class),
         ];
     }
 }
