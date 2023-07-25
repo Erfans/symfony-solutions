@@ -1,0 +1,5 @@
+commons:
+    create_entity: Create new entity
+    show_entity: Show entity
+    edit_entity: Edit entity
+

@@ -12,12 +12,13 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Owner</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for hotel in hotels %}
@@ -25,9 +26,12 @@
                 <td>{{ hotel.id }}</td>
                 <td>{{ hotel.name }}</td>
                 <td>{{ hotel.address }}</td>
+                <td>{{ hotel.owner.email }}</td>
                 <td>
-                    <a href="{{ path('app_hotel_show', {'id': hotel.id}) }}">show</a>
-                    <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}">edit</a>
+                    <a href="{{ path('app_hotel_show', {'id': hotel.id}) }}">{{ "commons.show_entity"|trans }}</a>
+                    {% if is_granted("ROLE_HOTEL_OWNER") %}
+                        <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}">{{ "commons.edit_entity"|trans }}</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,5 +42,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_hotel_new') }}">Create new</a>
+    {% if is_granted("ROLE_HOTEL_OWNER") %}
+        <a href="{{ path('app_hotel_new') }}">{{ "commons.create_entity"|trans }}</a>
+    {% endif %}
 {% endblock %}
